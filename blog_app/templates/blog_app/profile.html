@@ -1,0 +1,30 @@
+{% extends 'blog_app/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div>
+
+    <div style="
+                      width: 500px; border-color:black;
+                      padding: 15px;
+                      margin-top:10px;
+                      margin-left:10px;
+                      background-color: pink;
+                      box-shadow: 5px 5px grey;">
+        <form method="post"  action="/profile/">
+
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mv-4">Profile</legend>
+                {{ u_form|crispy }}
+                {{ p_form|crispy }}
+
+            </fieldset>
+
+                <button class="btn btn-outline-info" type="submit">Update</button>
+
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

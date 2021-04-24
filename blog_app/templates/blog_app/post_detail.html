@@ -1,0 +1,35 @@
+{% extends 'blog_app/base.html' %}
+{% block content %}
+
+
+    <p>
+        <table style="
+                      width: 600px; border-color:black;
+                      height: 100px;
+<!--                  padding: 50px;-->
+                      margin-left:20px;
+                      background-color: pink;
+                      box-shadow: 5px 5px grey;">
+            <tr>
+                <td>
+                    <img class="rounded-circle" src="{{ object.author.profile.image.url }}" height="70px" width="90px">
+                    <a href="{% url 'user-posts' object.author.username %}"><b>{{object.author}}</b></a>
+                     - {{ object.date_posted | date:"F d, Y"}}</h5>
+                    {% if user == object.author %}
+                    <div style="margin-top:5px; margin-bottom:5px; margin-left:10px; ">
+                        <a class="btn btn-secondary btn-sm" href="{% url 'post-update' object.id %}">Update Post</a>
+                    <a class="btn btn-danger btn-sm" href="{% url 'post-delete' object.id %}">Delete Post</a>
+                    </div>
+                     {% endif %}
+
+                    <h4 >{{object.title}}</h4>
+                    <i style="color:green; padding-right:5px" >{{object.content}}</i><br><br>
+                </td>
+            </tr>
+        </table>
+
+    </p>
+
+
+{% endblock %}
+
